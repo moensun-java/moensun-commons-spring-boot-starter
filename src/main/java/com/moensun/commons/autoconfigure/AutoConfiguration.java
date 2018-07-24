@@ -21,9 +21,6 @@ import org.springframework.context.annotation.Configuration;
                 CommonsProperties.class
         }
 )
-@ComponentScan(
-        basePackages = {"com.moensun.commons.spring.context"}
-)
 public class AutoConfiguration {
     @Autowired
     private CommonsProperties commonsProperties;
@@ -33,6 +30,7 @@ public class AutoConfiguration {
     public MSResourceBundle msResourceBundle(){
         MSResourceBundle  msResourceBundle = new MSResourceBundle();
         msResourceBundle.setResourceBundle(commonsProperties.getResourcePath());
+        msResourceBundle.setResourceBundles(commonsProperties.getResourcePaths());
         return msResourceBundle;
     }
 
